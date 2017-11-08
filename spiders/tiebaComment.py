@@ -1,11 +1,13 @@
 #!/use/bin/env python
 #_*_coding:utf-8_*_
-import requests
 import re
+import scrapy
+from scrapy.http import Request
+from tiebaComment.items import TiebaUrlsItem
 
-
+class MySpider(scrapy.Spider):
+    name =  'tiebaComment'
 baseUrl = r'https://tieba.baidu.com/f?kw=%E6%88%92%E8%B5%8C&ie=utf-8&pn={pn}'
-headers = {"User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36"}
 cookies = {"Cookie": "BAIDUID=A6E139B54571CC652E26FF2ACF555BBE:FG=1; PSTM=1506316275; BIDUPSID=861EC6D180D7AEC1370D8DEA07FC639E; TIEBA_USERTYPE=11a9867d81a3687b4246720f; bdshare_firstime=1506582548004; __cfduid=d1a93acf1fbb522eb47d394990f43ff9b1508725303; MCITY=-179%3A75%3A; fixed_bar=1; bottleBubble=1; FP_LASTTIME=1509932977010; FP_UID=0d8ea68b1941be419e7685f3e908b0f7; TIEBAUID=18658700369be7572fd8169c; baidu_broswer_setup_%E6%B2%99%E6%BC%A0%E4%B8%80%E9%81%93%E9%A3%8E%E6%99%AF%E7%BA%BF=0; PSINO=3; H_PS_PSSID=1425_21106_24879_22073; BDORZ=B490B5EBF6F3CD402E515D22BCDA1598; wise_device=0"}
 
 
@@ -51,20 +53,15 @@ class BDTB:
 
 
     # 抓取x->y页的所有帖子的评论和回复文字
-    def startCrawl(self, startpage, endpage):
-        #获取总链接列表并打印出来
+    def startCrawl(self, startpage, endpage)
         totalurls = []
         for i in range(startpage-1, endpage):
-            print('收集第'+str(startpage)+'页至第'+str(endpage)+'页帖子链接')
             for ut in self.getUrlTails(i):
                 totalurls.append(ut)
 
         #以下只是打印数据，无逻辑关系
         urls_num = str(len(totalurls))
         print('共收集到' + urls_num + '条帖子')
-        for url in totalurls:
-            print('所有帖子链接列表为：')
-            print(url)
 
         #访问每个具体帖子
         for x in totalurls:

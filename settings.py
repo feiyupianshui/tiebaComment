@@ -67,9 +67,9 @@ DOWNLOADER_MIDDLEWARES = {
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'tiebaCommment.pipelines.TiebacommmentPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'tiebaComment.pipelines.TiebacommentPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
@@ -94,8 +94,3 @@ HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
 LOG_LEVEL = 'INFO'
 
-MYSQL_HOSTS = '127.0.0.1'
-MYSQL_USER = 'root'
-MYSQL_PASSWORD = '7H49M343q'
-MYSQL_PORT = '3306'
-MYSQL_DB = 'nogambling'

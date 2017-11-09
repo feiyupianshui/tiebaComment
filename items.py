@@ -8,13 +8,12 @@
 import scrapy
 
 
-class TiebaIdsItem(scrapy.Item):
+
+class TiebacommmentItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
     tid = scrapy.Field()
-    replyNums = scrapy.Field()
+    replynums = scrapy.Field()
     title = scrapy.Field()
-
-class TiebacommmentItem(scrapy.Item):
-    pages = scrapy.Field()
+    page = scrapy.Field()
     comments = scrapy.Field()

@@ -30,14 +30,14 @@ class MySpider(scrapy.Spider):
         pattern2 = re.compile('<span class="red">(.*?)</span>')
         try:
             page_num = re.search(pattern2, response.text).group(1)
-        except AttributeError:
+        except:
             print('帖子不存在，跳过')
         pattern3 = re.compile('<h3 class="core_title_txt pull-left text-overflow  ".*?>(.*?)</h3>')
         try:
             title = re.search(pattern3, response.text).group(1)
         except:
             title = '百度贴吧'
-        nowpage = 1
+        nowpage = 0
         for x in range(1, int(page_num)+1):
             turn_url = self.URL + response.meta['tid'] + '?pn=' + str(x)
             page = nowpage
